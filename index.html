@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cadastro CNES - Prefeitura de Cacoal</title>
+  <style>
+    :root {
+      --verde-saude: #28a745;
+      --verde-hover: #218838;
+      --azul-prefeitura: #005aa7;
+      --fundo: #f0f4f8;
+      --branco: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      font-size: 11px;
+      margin: 0;
+      padding: 0;
+      background: var(--fundo);
+      color: #333;
+    }
+
+    .container {
+      width: 210mm;
+      max-width: 100%;
+      margin: 0 auto;
+      background: var(--branco);
+      padding: 8px 15px;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+
+    .logo img {
+      width: 80px;
+    }
+
+    .titulo {
+      text-align: center;
+      flex-grow: 1;
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+
+    .titulo h1, .titulo h2, .titulo h3 {
+      margin: 2px 0;
+      font-size: 12px;
+      color: var(--azul-prefeitura);
+    }
+
+    .data-cabecalho {
+      text-align: right;
+      font-size: 11px;
+    }
+
+    label {
+      font-weight: bold;
+      display: block;
+      margin-top: 4px;
+      margin-bottom: 1px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 4px;
+      margin-bottom: 4px;
+      font-size: 11px;
+      border: 1px solid #ccc;
+      border-radius: 2px;
+    }
+
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .row > div {
+      flex: 1 1 48%;
+    }
+
+    h3 {
+      text-align: center;
+      color: var(--azul-prefeitura);
+      margin-top: 8px;
+      margin-bottom: 4px;
+    }
+
+    .declaration {
+      margin-top: 10px;
+      font-size: 11px;
+    }
+
+    button {
+      margin-top: 10px;
+      background-color: var(--verde-saude);
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      font-size: 12px;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: var(--verde-hover);
+    }
+
+    @media print {
+      button {
+        display: none;
+      }
+
+      body {
+        background: #fff;
+      }
+
+      .container {
+        width: auto;
+        padding: 0 10px;
+      }
+
+      .header {
+        flex-wrap: nowrap;
+      }
+
+      input, select {
+        border: 1px solid #000;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="header">
+      <div class="logo">
+        <img src="Screenshot_1.png" alt="Prefeitura de Cacoal">
+      </div>
+      <div class="titulo">
+        <h1>PREFEITURA MUNICIPAL DE CACOAL</h1>
+        <h2>SECRETARIA MUNICIPAL DE SAÚDE</h2>
+        <h3>Cadastro de Profissional para Inserção no CNES</h3>
+      </div>
+      <div class="data-cabecalho">
+        <label for="data">Data:</label>
+        <input type="date" id="data" name="data">
+      </div>
+    </div>
+
+    <label>Nome completo:</label><input type="text">
+
+    <div class="row">
+      <div><label>CPF:</label><input type="text"></div>
+      <div><label>RG:</label><input type="text"></div>
+    </div>
+
+    <div class="row">
+      <div><label>Data de nascimento:</label><input type="date"></div>
+      <div>
+        <label>Sexo:</label>
+        <select>
+          <option>Masculino</option>
+          <option>Feminino</option>
+          <option>Outro</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="row">
+      <div><label>Nacionalidade:</label><input type="text"></div>
+      <div><label>Naturalidade:</label><input type="text"></div>
+    </div>
+
+    <div class="row">
+      <div><label>Nome da mãe:</label><input type="text"></div>
+      <div><label>Nome do pai:</label><input type="text"></div>
+    </div>
+
+    <label>Endereço completo:</label><input type="text">
+
+    <div class="row">
+      <div><label>Telefone:</label><input type="text"></div>
+      <div><label>E-mail:</label><input type="email"></div>
+    </div>
+
+    <h3>Formação e Registro</h3>
+
+    <label>Curso:</label><input type="text">
+
+    <div class="row">
+      <div><label>Instituição de ensino:</label><input type="text"></div>
+      <div><label>Ano de conclusão:</label><input type="text"></div>
+    </div>
+
+    <div class="row">
+      <div><label>Registro Profissional:</label><input type="text"></div>
+      <div><label>UF:</label><input type="text"></div>
+    </div>
+
+    <div class="row">
+      <div><label>Número do RQE (se houver):</label><input type="text"></div>
+      <div><label>UF:</label><input type="text"></div>
+    </div>
+
+    <h3>Vínculo com o Município</h3>
+
+    <div class="row">
+    <div><label>Cargo ou função:</label>
+    <select>
+      <option>Médico</option>
+      <option>Enfermeiro</option>
+      <option>Téc. Enfermagem</option>
+      <option>Cirurgião Dentista</option>
+      <option>Téc. Saúde Bucal</option>
+      <option>Psicólogo</option>
+      <option>Motorista</option>
+      <option>Zelador</option>
+      <option>Administrativo</option>
+      <option>Gerente</option>
+    </select>
+
+    <label>Unidade de saúde vinculada:</label><input type="text">
+
+    <div class="titulo">Transferência de Unidade</div>
+
+  <div class="linha-checkbox">
+    <span>Se for transferida de outra unidade, marque esta opção</span>
+    <input type="checkbox" id="transferida" onclick="toggleTransferInfo()" />
+  </div>
+
+  <div id="transferInfo" style="display: none;">
+    <label for="unidadeSaude">Unidade de saúde vinculada:</label>
+    <input type="text" id="unidadeSaude" name="unidadeSaude" />
+  </div>
+
+    <div class="row">
+      <div><label>Tipo de vínculo:</label>
+        <select>
+          <option>Efetivo</option>
+          <option>Comissionado</option>
+          <option>Temporário</option>
+          <option>Portariado</option>
+          <option>Outros</option>
+          <option>PJ</option>
+        </select>
+      </div>
+      <div><label>INE de Equipe:</label><input type="text"></div>
+    </div>
+
+    <div class="row">
+      <div><label>Data de início:</label><input type="date"></div>
+      <div><label>Carga horária semanal (horas):</label><input type="number"></div>
+    </div>
+
+    <div class="row">
+      <div><label>Possui vínculo com outro município?</label>
+        <select><option>Não</option><option>Sim</option></select>
+      </div>
+      <div><label>Se sim, qual município?</label><input type="text"></div>
+      <div><label>Carga horária semanal (horas):</label><input type="number"></div>
+    </div>
+
+    <div class="declaration">
+      <p>Declaro que as informações acima são verdadeiras, sob as penas da lei.</p>
+      <label>Assinatura do profissional:</label><input type="text">
+      <label>Assinatura do responsável pelo recebimento:</label><input type="text">
+    </div>
+
+    <div class="declaration">
+  <p><strong>Enviar no e-mail:</strong> exemplo@cacoal.ro.gov.br</p>
+</div>
+
+    <button onclick="window.print()">Imprimir Cadastro</button>
+  </div> 
+
+</div> 
+
+<script>
+    function toggleTransferInfo() {
+      const checkbox = document.getElementById('transferida');
+      const transferDiv = document.getElementById('transferInfo');
+      transferDiv.style.display = checkbox.checked ? 'block' : 'none';
+    }
+  </script>
+
+</body>
+</html>
