@@ -216,33 +216,57 @@
     <h3>Vínculo com o Município</h3>
 
     <div class="row">
-    <div><label>Cargo ou função:</label>
-    <select>
+  <div>
+    <label for="cargo">Cargo ou função:</label>
+    <select id="cargo" onchange="toggleOutroCargo()">
       <option>Médico</option>
       <option>Enfermeiro</option>
       <option>Téc. Enfermagem</option>
       <option>Cirurgião Dentista</option>
       <option>Téc. Saúde Bucal</option>
+      <option>Agente Comunitário de Saúde</option>
+      <option>Agente de Combate às Endemias</option>
       <option>Psicólogo</option>
+      <option>Assistente Social</option>
+      <option>Fisioterapeuta</option>
       <option>Motorista</option>
       <option>Zelador</option>
       <option>Administrativo</option>
       <option>Gerente</option>
+      <option value="outros">Outros</option>
     </select>
+  </div>
+</div>
+
+<div class="row" id="outroCargoContainer" style="display: none;">
+  <div>
+    <label for="outroCargo">Informe o cargo:</label>
+    <input type="text" id="outroCargo" name="outroCargo" />
+  </div>
+</div>
+
 
     <label>Unidade de saúde vinculada:</label><input type="text">
 
     <div class="titulo">Transferência de Unidade</div>
 
-  <div class="linha-checkbox">
-    <span>Se for transferida de outra unidade, marque esta opção</span>
-    <input type="checkbox" id="transferida" onclick="toggleTransferInfo()" />
+  <div class="row">
+  <div>
+    <label>Transferido(a) de outra unidade?</label>
+    <select id="transferida" onchange="toggleTransferInfo()">
+      <option value="nao">Não</option>
+      <option value="sim">Sim</option>
+    </select>
   </div>
+</div>
 
-  <div id="transferInfo" style="display: none;">
-    <label for="unidadeSaude">Unidade de saúde vinculada:</label>
+<div class="row" id="transferInfo" style="display: none;">
+  <div>
+    <label for="unidadeSaude">Informe a unidade anterior:</label>
     <input type="text" id="unidadeSaude" name="unidadeSaude" />
   </div>
+</div>
+
 
     <div class="row">
       <div><label>Tipo de vínculo:</label>
@@ -274,11 +298,11 @@
     <div class="declaration">
       <p>Declaro que as informações acima são verdadeiras, sob as penas da lei.</p>
       <label>Assinatura do profissional:</label><input type="text">
-      <label>Assinatura do responsável pelo recebimento:</label><input type="text">
+      <label>Assinatura do Gerente:</label><input type="text">
     </div>
 
     <div class="declaration">
-  <p><strong>Enviar no e-mail:</strong> exemplo@cacoal.ro.gov.br</p>
+  <p><strong>Após a ficha ser preenchida e devidamente assinada Enviar no e-mail:</strong> neide.barreto.souza@hotmail.com</p>
 </div>
 
     <button onclick="window.print()">Imprimir Cadastro</button>
@@ -287,12 +311,21 @@
 </div> 
 
 <script>
-    function toggleTransferInfo() {
-      const checkbox = document.getElementById('transferida');
-      const transferDiv = document.getElementById('transferInfo');
-      transferDiv.style.display = checkbox.checked ? 'block' : 'none';
-    }
-  </script>
+  function toggleTransferInfo() {
+    const selecao = document.getElementById('transferida').value;
+    const transferDiv = document.getElementById('transferInfo');
+    transferDiv.style.display = selecao === 'sim' ? 'flex' : 'none';
+  }
+</script>
+
+<script>
+  function toggleOutroCargo() {
+    const cargo = document.getElementById('cargo').value;
+    const outroContainer = document.getElementById('outroCargoContainer');
+    outroContainer.style.display = (cargo === 'outros') ? 'flex' : 'none';
+  }
+</script>
+
 
 </body>
 </html>
