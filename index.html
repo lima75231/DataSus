@@ -214,7 +214,7 @@
   </div>
 
     <div class="row">
-      <div><label>Data de nascimento:</label><input type="date"></div>
+      <div><label>Data de nascimento:</label><input type="date" required></div>
       <div>
         <label>Sexo:</label>
         <select>
@@ -374,7 +374,8 @@
   <p><strong>GILSON E NEIDE PARA INFORMAÇÕES</strong></p>
 </div>
 
-    <button onclick="window.print()">Imprimir Cadastro</button>
+   <button onclick="mostrarMensagemEImprimir()">Imprimir Cadastro</button>
+
   </div> 
 
 </div> 
@@ -414,5 +415,16 @@
     campoCnpj.style.display = tipo === "PJ" ? "flex" : "none";
   }
 </script>
+
+<script>
+  function mostrarMensagemEImprimir() {
+    const mensagem = document.querySelector(".mensagem-pj");
+    mensagem.style.display = "block";
+    setTimeout(() => {
+      window.print();
+    }, 100); // pequeno delay para garantir que a mensagem apareça antes da impressão
+  }
+</script>
+
 </body>
 </html>
