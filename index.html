@@ -300,14 +300,21 @@
 
     <div class="row">
       <div><label>Tipo de vínculo:</label>
-        <select>
+       <select id="tipo-vinculo" onchange="toggleCNPJ()">
           <option>Efetivo</option>
-          <option>Comissionado</option>
-          <option>Temporário</option>
-          <option>Portariado</option>
-          <option>Outros</option>
-          <option>PJ</option>
-        </select>
+         <option>Comissionado</option>
+         <option>Temporário</option>
+         <option>Portariado</option>
+         <option>Outros</option>
+         <option>PJ</option>
+      </select>
+
+      <div class="row" id="campo-cnpj" style="display: none;">
+    <div>
+    <label for="cnpj">Informe o CNPJ:</label>
+    <input type="text" id="cnpj" name="cnpj" placeholder="00.000.000/0000-00"/>
+    </div>
+</div>
       </div>
       <div><label>INE de Equipe:</label><input type="text"></div>
     </div>
@@ -375,6 +382,14 @@
     const select = document.getElementById("vinculo-outro-municipio");
     const campo = document.getElementById("campo-municipio");
     campo.style.display = select.value === "Sim" ? "block" : "none";
+  }
+</script>
+
+<script>
+  function toggleCNPJ() {
+    const tipo = document.getElementById("tipo-vinculo").value;
+    const campoCnpj = document.getElementById("campo-cnpj");
+    campoCnpj.style.display = tipo === "PJ" ? "flex" : "none";
   }
 </script>
 </body>
