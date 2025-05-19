@@ -167,6 +167,7 @@
       .row, .declaration {
         page-break-inside: avoid;
       }
+    }
 
 .mensagem-pj {
   display: none;
@@ -184,8 +185,7 @@
   .mensagem-pj {
     display: block !important;
   }
-
-    }
+}
   </style>
 </head>
 <body>
@@ -338,9 +338,21 @@
     </div>
 
     <div class="row">
-      <div><label>Data de início:</label><input type="date"></div>
-      <div><label>Carga horária semanal (horas):</label><input type="number"></div>
+      <div><label>Data de início:</label>
+      <input type="date"></div> 
     </div>
+
+<div>
+    <label>Carga horária semanal (horas):</label>
+    <select id="Carga horária semanal" onchange="togglehoras()">
+         <option>10</option>
+         <option>20</option>
+         <option>30</option>
+         <option>40</option>
+      </select>
+  </div>
+  
+
 
     <div class="row">
   <div>
@@ -358,7 +370,12 @@
 
   <div>
     <label>Carga horária semanal (horas):</label>
-    <input type="number" />
+    <select id="Carga horária semanal" onchange="togglehoras()">
+          <option>10</option>
+         <option>20</option>
+         <option>30</option>
+         <option>40</option>
+      </select>
   </div>
 </div>
 
