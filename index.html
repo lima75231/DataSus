@@ -197,13 +197,23 @@
       <div class="titulo">
         <h1>PREFEITURA MUNICIPAL DE CACOAL</h1>
         <h2>SECRETARIA MUNICIPAL DE SAÚDE</h2>
-        <h3>Cadastro de Profissional para Inserção no CNES</h3>
+        <h3>Cadastro/Exclusão de Profissional</h3>
       </div>
       <div class="data-cabecalho">
         <label for="data">Data:</label>
         <input type="date" id="data" required>
       </div>
     </div>
+
+    <label>
+    Ação:
+    <select id="acao" onchange="atualizarCampos()">
+      <option value="">Selecione...</option>
+      <option value="incluir">Inclusão</option>
+      <option value="excluir">Alteração</option>
+      <option value="excluir">Exclusão</option>
+    </select>
+  </label>
 
     <label>Nome completo:</label>
       <input type="text" name="nome_completo" required>
