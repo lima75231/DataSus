@@ -210,10 +210,17 @@
     <select id="acao" onchange="atualizarCampos()">
       <option value="">Selecione...</option>
       <option value="incluir">Inclusão</option>
-      <option value="excluir">Alteração</option>
+      <option value="Alteração">Alteração</option>
       <option value="excluir">Exclusão</option>
     </select>
   </label>
+
+  <div id="motivoExclusao" style="display: none; margin-top: 10px;">
+  <label>
+    Motivo da exclusão:
+    <input type="text" id="motivo" placeholder="Digite o motivo da exclusão">
+  </label>
+</div>
 
     <label>Nome completo:</label>
       <input type="text" name="nome_completo" required>
@@ -479,6 +486,19 @@
     // Mostrar Formação e Registro apenas para determinados cargos
     const cargosComFormacao = ["Médico", "Enfermeiro", "Téc. Enfermagem", "Psicólogo", "Assistente Social", "Cirurgião Dentista"];
     formacaoRegistro.style.display = cargosComFormacao.includes(cargo) ? "block" : "none";
+  }
+</script>
+
+<script>
+  function atualizarCampos() {
+    const acao = document.getElementById("acao").value;
+    const campoMotivo = document.getElementById("motivoExclusao");
+
+    if (acao === "excluir") {
+      campoMotivo.style.display = "block";
+    } else {
+      campoMotivo.style.display = "none";
+    }
   }
 </script>
 
