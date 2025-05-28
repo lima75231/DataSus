@@ -298,7 +298,7 @@
   </div>
 </div>
 
-<!-- Formação e Registro: só aparece se cargo for médico, enfermeiro, técnico enfermagem ou dentista -->
+<!-- Formação e Registro: só aparece se cargo for médico, enfermeiro, técnico enfermagem, Psicólogo, Nutricionista, Fisioterapeuta ou dentista -->
 <div id="formacaoRegistro" style="display: none;">
   <h3>Formação e Registro</h3>
 
@@ -467,7 +467,7 @@
     outroCargoContainer.style.display = (cargo === "outros") ? "block" : "none";
 
     // Mostrar Formação e Registro apenas para determinados cargos
-    const cargosComFormacao = ["Médico", "Enfermeiro", "Téc. Enfermagem", "Cirurgião Dentista"];
+    const cargosComFormacao = ["Médico", "Enfermeiro", "Téc. Enfermagem", "Psicólogo", "Cirurgião Dentista"];
     formacaoRegistro.style.display = cargosComFormacao.includes(cargo) ? "block" : "none";
   }
 </script>
