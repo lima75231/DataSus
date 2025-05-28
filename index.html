@@ -214,17 +214,29 @@
   </div>
 
     <div class="row">
-      <div><label>Data de nascimento:</label><input type="date" required></div>
-      <div>
-        <label>Sexo:</label>
-        <select>
-          <option>Selecione</option>
-          <option>Masculino</option>
-          <option>Feminino</option>
-          <option>Outro</option>
-        </select>
-      </div>
-    </div>
+  <div><label>Data de nascimento:</label><input type="date" required></div>
+  <div>
+    <label>Sexo:</label>
+    <select required>
+      <option value="">Selecione</option>
+      <option value="Masculino">Masculino</option>
+      <option value="Feminino">Feminino</option>
+      <option value="Outro">Outro</option>
+    </select>
+  </div>
+  <div>
+    <label>Raça/Cor:</label>
+    <select name="raca_cor" required>
+      <option value="">Selecione</option>
+      <option value="Branca">Branca</option>
+      <option value="Preta">Preta</option>
+      <option value="Parda">Parda</option>
+      <option value="Amarela">Amarela</option>
+      <option value="Indígena">Indígena</option>
+      <option value="Não declarada">Prefere não declarar</option>
+    </select>
+  </div>
+</div>
 
     <div class="row">
       <div><label>Nacionalidade:</label><input type="text"></div>
@@ -243,81 +255,69 @@
       <div><label>E-mail:</label><input type="email"></div>
     </div>
 
-    <h3>Formação e Registro</h3>
-
-    <label>Curso:</label><input type="text">
-
-    <div class="row">
-      <div><label>Instituição de ensino:</label><input type="text"></div>
-      <div><label>Ano de conclusão:</label><input type="text"></div>
-    </div>
-
-    <div class="row">
-      <div><label>Registro Profissional:</label><input type="text"></div>
-      <div><label>UF:</label><input type="text"></div>
-    </div>
-
-    <div class="row">
-      <div><label>Número do RQE (se houver):</label><input type="text"></div>
-      <div><label>UF:</label><input type="text"></div>
-    </div>
-
     <h3>Vínculo com o Município</h3>
 
-    <div class="row">
+<!-- Unidade vinculada -->
+<div class="row">
+  <div>
+    <label>Unidade de saúde vinculada:</label>
+    <input type="text" name="unidade_vinculada" required>
+  </div>
+</div>
+
+<!-- Cargo ou função -->
+<div class="row">
   <div>
     <label for="cargo">Cargo ou função:</label>
-    <select id="cargo" onchange="toggleOutroCargo()">
-      <option>Selecione</option>
-      <option>Médico</option>
-      <option>Enfermeiro</option>
-      <option>Téc. Enfermagem</option>
-      <option>Cirurgião Dentista</option>
-      <option>Téc. Saúde Bucal</option>
-      <option>Agente Comunitário de Saúde</option>
-      <option>Agente de Combate às Endemias</option>
-      <option>Psicólogo</option>
-      <option>Assistente Social</option>
-      <option>Fisioterapeuta</option>
-      <option>Motorista</option>
-      <option>Zelador</option>
-      <option>Administrativo</option>
-      <option>Gerente</option>
+    <select id="cargo" name="cargo" onchange="toggleCamposCargo()" required>
+      <option value="">Selecione</option>
+      <option value="Médico">Médico</option>
+      <option value="Enfermeiro">Enfermeiro</option>
+      <option value="Téc. Enfermagem">Téc. Enfermagem</option>
+      <option value="Cirurgião Dentista">Cirurgião Dentista</option>
+      <option value="Téc. Saúde Bucal">Téc. Saúde Bucal</option>
+      <option value="Agente Comunitário de Saúde">Agente Comunitário de Saúde</option>
+      <option value="Agente de Combate às Endemias">Agente de Combate às Endemias</option>
+      <option value="Psicólogo">Psicólogo</option>
+      <option value="Assistente Social">Assistente Social</option>
+      <option value="Fisioterapeuta">Fisioterapeuta</option>
+      <option value="Motorista">Motorista</option>
+      <option value="Zelador">Zelador</option>
+      <option value="Administrativo">Administrativo</option>
+      <option value="Gerente">Gerente</option>
       <option value="outros">Outros</option>
     </select>
   </div>
 </div>
 
+<!-- Campo extra se selecionar "Outros" -->
 <div class="row" id="outroCargoContainer" style="display: none;">
   <div>
     <label for="outroCargo">Informe o cargo:</label>
-    <input type="text" id="outroCargo" name="outroCargo" />
+    <input type="text" id="outroCargo" name="outroCargo">
   </div>
 </div>
 
+<!-- Formação e Registro: só aparece se cargo for médico, enfermeiro, técnico enfermagem ou dentista -->
+<div id="formacaoRegistro" style="display: none;">
+  <h3>Formação e Registro</h3>
 
-    <label>Unidade de saúde vinculada:</label><input type="text">
+  
+  <div class="row">
+    <div><label>Instituição de ensino:</label><input type="text" name="instituicao"></div>
+    <div><label>Ano de conclusão:</label><input type="text" name="ano_conclusao"></div>
+  </div>
 
-    <div class="titulo">Transferência de Unidade</div>
+  <div class="row"> 
+    <div><label>Registro Profissional:</label><input type="text" name="registro_profissional"></div>
+    <div><label>UF:</label><input type="text" name="uf_registro"></div>
+  </div>
 
   <div class="row">
-  <div>
-    <label>Transferido(a) de outra unidade?</label>
-    <select id="transferida" onchange="toggleTransferInfo()">
-      <option>Selecione</option>
-      <option value="nao">Não</option>
-      <option value="sim">Sim</option>
-    </select>
+    <div><label>Número do RQE (se houver):</label><input type="text" name="rqe"></div>
+    <div><label>UF:</label><input type="text" name="uf_rqe"></div>
   </div>
 </div>
-
-<div class="row" id="transferInfo" style="display: none;">
-  <div>
-    <label for="unidadeSaude">Informe a unidade anterior:</label>
-    <input type="text" id="unidadeSaude" name="unidadeSaude" />
-  </div>
-</div>
-
 
     <div class="row">
       <div><label>Tipo de vínculo:</label>
@@ -327,6 +327,7 @@
          <option>Comissionado</option>
          <option>Temporário</option>
          <option>Portariado</option>
+         <option>Celetista</option>
          <option>CNPJ</option>
          <option>Outros</option>
       </select>
@@ -339,7 +340,7 @@
 </div>
 
       </div>
-      <div><label>INE de Equipe:</label><input type="text"></div>
+      <div><label>INE de Equipe ESF:</label><input type="text"></div>
     </div>
 
     <div class="row">
@@ -358,7 +359,7 @@
       </select>
   </div>
       
-  
+
 
     <div class="row">
   <div>
@@ -396,7 +397,7 @@
     <div class="declaration">
  <p><strong>Após a ficha ser preenchida e devidamente assinada enviar no e-mail: neide.barreto.souza@hotmail.com</strong></p>
 
-  <p><strong>GILSON E NEIDE PARA INFORMAÇÕES</strong></p>
+  <p><strong>PARA INFORMAÇÕES ENTRAR EM CONTATO COM GILSON E NEIDE </strong></p>
 </div>
 
    <button onclick="mostrarMensagemEImprimir()">Imprimir Cadastro</button>
@@ -453,6 +454,21 @@
     setTimeout(() => {
       window.print();
     }, 100); // pequeno delay para garantir que a mensagem apareça antes da impressão
+  }
+</script>
+
+<script>
+  function toggleCamposCargo() {
+    const cargo = document.getElementById("cargo").value;
+    const outroCargoContainer = document.getElementById("outroCargoContainer");
+    const formacaoRegistro = document.getElementById("formacaoRegistro");
+
+    // Mostrar campo "outros"
+    outroCargoContainer.style.display = (cargo === "outros") ? "block" : "none";
+
+    // Mostrar Formação e Registro apenas para determinados cargos
+    const cargosComFormacao = ["Médico", "Enfermeiro", "Téc. Enfermagem", "Cirurgião Dentista"];
+    formacaoRegistro.style.display = cargosComFormacao.includes(cargo) ? "block" : "none";
   }
 </script>
 
