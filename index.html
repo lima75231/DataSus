@@ -435,7 +435,7 @@
   <p><strong>Para mais informações, entre em contato com Gilson ou Neide. E-mail: neide.barreto.souza@hotmail.com. </strong></p>
 </div>
 
-   <button onclick="mostrarMensagemEImprimir()">Imprimir Cadastro</button>
+   <button onclick="validarFormulario()">Imprimir Cadastro</button>
 
   </div> 
 
@@ -548,6 +548,30 @@
       campoMunicipio.style.display = "none";
       campoCarga.style.display = "none";
     }
+  }
+</script>
+
+<script>
+  function validarFormulario() {
+    const cargo = document.getElementById("cargo").value;
+    const especialidade = document.getElementById("especialidadeMedica").value;
+
+    // Verifica se cargo foi selecionado
+    if (!cargo) {
+      alert("Por favor, selecione o cargo ou função.");
+      document.getElementById("cargo").focus();
+      return;
+    }
+
+    // Se cargo for Médico, a especialidade é obrigatória
+    if (cargo === "Médico" && !especialidade) {
+      alert("Por favor, selecione a especialidade médica.");
+      document.getElementById("especialidadeMedica").focus();
+      return;
+    }
+
+    // Se passou pelas validações, imprime o cadastro
+    mostrarMensagemEImprimir();
   }
 </script>
 
