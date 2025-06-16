@@ -310,6 +310,21 @@
   </div>
 </div>
 
+<!-- Subcampo: Especialidade Médica -->
+<div class="row" id="especialidadeMedicaContainer" style="display: none;">
+  <div>
+    <label for="especialidadeMedica">Especialidade do Médico:</label>
+    <select id="especialidadeMedica" name="especialidadeMedica">
+      <option value="">Selecione</option>
+      <option value="Clínico Geral">Clínico Geral</option>
+      <option value="Pediatra">Pediatra</option>
+      <option value="Estratégia de Saúde da Família">Estratégia de Saúde da Família</option>
+      <option value="Outra">Outra</option>
+    </select>
+  </div>
+</div>
+
+
 <!-- Campo extra se selecionar "Outros" -->
 <div class="row" id="outroCargoContainer" style="display: none;">
   <div>
@@ -478,17 +493,24 @@
 
 <script>
   function toggleCamposCargo() {
-    const cargo = document.getElementById("cargo").value;
-    const outroCargoContainer = document.getElementById("outroCargoContainer");
-    const formacaoRegistro = document.getElementById("formacaoRegistro");
+  const cargo = document.getElementById("cargo").value;
+  const outroCargoContainer = document.getElementById("outroCargoContainer");
+  const formacaoRegistro = document.getElementById("formacaoRegistro");
+  const especialidadeMedicaContainer = document.getElementById("especialidadeMedicaContainer");
 
-    // Mostrar campo "outros"
-    outroCargoContainer.style.display = (cargo === "outros") ? "block" : "none";
+  // Mostrar campo "outros"
+  outroCargoContainer.style.display = (cargo === "outros") ? "block" : "none";
 
-    // Mostrar Formação e Registro apenas para determinados cargos
-    const cargosComFormacao = ["Médico", "Enfermeiro", "Preceptor/Médico","Preceptor/Enfermeiro", "Téc. Enfermagem", "Aux. Enfermagem", "Psicólogo", "Assistente Social", "Cirurgião Dentista"];
-    formacaoRegistro.style.display = cargosComFormacao.includes(cargo) ? "block" : "none";
-  }
+  // Mostrar subespecialidade apenas se for Médico
+  especialidadeMedicaContainer.style.display = (cargo === "Médico") ? "block" : "none";
+
+  // Mostrar Formação e Registro para determinados cargos
+  const cargosComFormacao = [
+    "Médico", "Enfermeiro", "Preceptor/Médico", "Preceptor/Enfermeiro",
+    "Téc. Enfermagem", "Aux. Enfermagem", "Psicólogo", "Assistente Social", "Cirurgião Dentista"
+  ];
+  formacaoRegistro.style.display = cargosComFormacao.includes(cargo) ? "block" : "none";
+}
 </script>
 
 <script>
