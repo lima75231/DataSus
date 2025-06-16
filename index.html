@@ -293,7 +293,6 @@
       <option value="Téc. Enfermagem">Téc. Enfermagem</option>
       <option value="Aux. Enfermagem">Aux. Enfermagem</option>
       <option value="Preceptor/Enfermeiro">Preceptor/Enfermeiro</option>
-      <option value="Preceptor/Médico">Preceptor/Médico</option>
       <option value="Cirurgião Dentista">Cirurgião Dentista</option>
       <option value="Téc. Saúde Bucal">Téc. Saúde Bucal</option>
       <option value="Agente Comunitário de Saúde">Agente Comunitário de Saúde</option>
@@ -313,11 +312,12 @@
 <!-- Subcampo: Especialidade Médica -->
 <div class="row" id="especialidadeMedicaContainer" style="display: none;">
   <div>
-    <label for="especialidadeMedica">Especialidade do Médico:</label>
+    <label style="color: #e63946;" for="especialidadeMedica">Especialidade do Médico:</label>
     <select id="especialidadeMedica" name="especialidadeMedica">
       <option value="">Selecione</option>
       <option value="Clínico Geral">Clínico Geral</option>
       <option value="Pediatra">Pediatra</option>
+      <option value="Pediatra">Preceptor</option>
       <option value="Estratégia de Saúde da Família">Estratégia de Saúde da Família</option>
       <option value="Outra">Outra</option>
     </select>
@@ -497,12 +497,20 @@
   const outroCargoContainer = document.getElementById("outroCargoContainer");
   const formacaoRegistro = document.getElementById("formacaoRegistro");
   const especialidadeMedicaContainer = document.getElementById("especialidadeMedicaContainer");
+  const especialidadeMedica = document.getElementById("especialidadeMedica");
 
   // Mostrar campo "outros"
   outroCargoContainer.style.display = (cargo === "outros") ? "block" : "none";
 
-  // Mostrar subespecialidade apenas se for Médico
-  especialidadeMedicaContainer.style.display = (cargo === "Médico") ? "block" : "none";
+  // Mostrar subespecialidade médica
+  if (cargo === "Médico") {
+    especialidadeMedicaContainer.style.display = "block";
+    especialidadeMedica.setAttribute("required", "required");
+  } else {
+    especialidadeMedicaContainer.style.display = "none";
+    especialidadeMedica.removeAttribute("required");
+    especialidadeMedica.value = ""; // limpa valor ao ocultar
+  }
 
   // Mostrar Formação e Registro para determinados cargos
   const cargosComFormacao = [
