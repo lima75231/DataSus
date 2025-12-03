@@ -167,12 +167,33 @@ button:hover {
   }
 
   input,
-  select {
-    font-size: 10px;
-    padding: 2px;
-    margin-bottom: 2px;
-    border: 1px solid #000;
-  }
+  sselect {
+  width: 100%;
+  padding: 4px;
+  margin-bottom: 4px;
+  font-size: 11px;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+}
+
+/* melhora a seta dos selects */
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: #fff;
+  background-image:
+    linear-gradient(45deg, transparent 50%, #555 50%),
+    linear-gradient(135deg, #555 50%, transparent 50%),
+    linear-gradient(to right, #ccc, #ccc);
+  background-position:
+    calc(100% - 16px) center,
+    calc(100% - 10px) center,
+    calc(100% - 2.4em) center;
+  background-size: 6px 6px, 6px 6px, 1px 60%;
+  background-repeat: no-repeat;
+  padding-right: 2.6em; /* abre espaço pra seta maior */
+}
 
   label {
     margin-top: 2px;
@@ -203,4 +224,14 @@ button:hover {
     margin-top: 10px;
     padding-top: 4px;
   }
+}
+/* Select obrigatório ainda não preenchido */
+select:required:invalid {
+  border: 2px solid #e63946;
+  background-color: #fff5f5;
+}
+
+/* Select obrigatório já preenchido */
+select:required:valid {
+  border: 1px solid #28a745;
 }

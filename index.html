@@ -142,6 +142,7 @@
         <label style="color: #e63946; font-size: 14px;" for="especialidadeMedica">Especialidade do Médico:</label>
         <select id="especialidadeMedica" name="especialidadeMedica">
           <option value="">Selecione</option>
+          <option value="Clínico Geral">Não tenho</option>
           <option value="Clínico Geral">Clínico Geral</option>
           <option value="Ginecologia e Obstetrícia">Ginecologia e Obstetrícia</option>
           <option value="Pediatra">Pediatra</option>
@@ -197,7 +198,7 @@
     <div class="row">
       <div>
         <label>Tipo de vínculo:</label>
-        <select id="tipo-vinculo" onchange="toggleCNPJ()">
+        <select id="tipo-vinculo" onchange="toggleCNPJ()"required>
           <option>Selecione</option>
           <option>Efetivo</option>
           <option>Comissionado</option>
