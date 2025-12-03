@@ -4,192 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Cadastro CNES - Prefeitura de Cacoal</title>
-  <style>
-    :root {
-      --verde-saude: #28a745;
-      --verde-hover: #218838;
-      --azul-prefeitura: #005aa7;
-      --fundo: #f0f4f8;
-      --branco: #ffffff;
-    }
 
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: Arial, sans-serif;
-      font-size: 11px;
-      margin: 0;
-      padding: 0;
-      background: var(--fundo);
-      color: #333;
-    }
-
-    .container {
-      width: 210mm;
-      max-width: 100%;
-      margin: 0 auto;
-      background: var(--branco);
-      padding: 8px 15px;
-    }
-
-    .header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 8px;
-    }
-
-    .logo img {
-      height: 100px;
-      width: auto;
-    }
-
-    .titulo {
-      text-align: center;
-      flex-grow: 1;
-      margin-left: 10px;
-      margin-right: 10px;
-    }
-
-    .titulo h1, .titulo h2, .titulo h3 {
-      margin: 2px 0;
-      font-size: 12px;
-      color: var(--azul-prefeitura);
-    }
-
-    .data-cabecalho {
-      text-align: right;
-      font-size: 11px;
-    }
-
-    label {
-      font-weight: bold;
-      display: block;
-      margin-top: 2px;
-      margin-bottom: 1px;
-    }
-
-    input, select {
-      width: 100%;
-      padding: 4px;
-      margin-bottom: 4px;
-      font-size: 11px;
-      border: 1px solid #ccc;
-      border-radius: 2px;
-    }
-
-    .row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      page-break-inside: avoid;
-    }
-
-    .row > div {
-      flex: 1 1 48%;
-    }
-
-    h3 {
-      text-align: center;
-      color: var(--azul-prefeitura);
-      margin: 4px 0;
-    }
-
-    .declaration {
-      margin-top: 6px;
-      font-size: 11px;
-      page-break-inside: avoid;
-    }
-
-    button {
-      margin-top: 10px;
-      background-color: var(--verde-saude);
-      color: white;
-      border: none;
-      padding: 6px 12px;
-      font-size: 12px;
-      border-radius: 3px;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background-color: var(--verde-hover);
-    }
-
-    @page {
-      size: A4 portrait;
-      margin: 10mm;
-    }
-
-    @media print {
-      body {
-        font-size: 10px;
-        background: #fff;
-        margin: 0;
-        padding: 0;
-      }
-
-      .container {
-        width: auto;
-        padding: 0 5mm;
-      }
-
-      .logo img {
-        height: 60px;
-      }
-
-      h1, h2, h3 {
-        font-size: 11px;
-      }
-
-      input, select {
-        font-size: 10px;
-        padding: 2px;
-        margin-bottom: 2px;
-        border: 1px solid #000;
-      }
-
-      label {
-        margin-top: 2px;
-        margin-bottom: 1px;
-      }
-
-      button {
-        display: none;
-      }
-
-      .row > div {
-        flex: 1 1 49%;
-      }
-
-      .row, .declaration {
-        page-break-inside: avoid;
-      }
-    }
-
-.mensagem-pj {
-  display: none;
-  margin-top: 15px;
-  padding: 10px;
-  border: 2px solid var(--azul-prefeitura);
-  background-color: #e8f0fe;
-  font-weight: bold;
-  font-size: 12px;
-  color: #003366;
-  border-radius: 4px;
-}
-
-@media print {
-  .mensagem-pj {
-    display: block !important;
-  }
-}
-  </style>
+  <!-- CSS externo -->
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
- <div class="container">
+  <div class="container">
     <div class="header">
       <div class="logo">
         <img src="Imagem1.png" alt="Prefeitura de Cacoal">
@@ -206,54 +26,54 @@
     </div>
 
     <label>
-     <label style="color: #e63946;">DADOS OPERACIONAIS:</label>
-    <select id="acao" onchange="atualizarCampos()">
-      <option value="">Selecione...</option>
-      <option value="incluir">Inclusão</option>
-      <option value="Alteração">Alteração</option>
-      <option value="excluir">Exclusão</option>
-    </select>
-  </label>
+      <label style="color: #e63946;">DADOS OPERACIONAIS:</label>
+      <select id="acao" onchange="atualizarCampos()">
+        <option value="">Selecione...</option>
+        <option value="incluir">Inclusão</option>
+        <option value="Alteração">Alteração</option>
+        <option value="excluir">Exclusão</option>
+      </select>
+    </label>
 
-  <div id="motivoExclusao" style="display: none; margin-top: 10px;">
-  <label>
-    Motivo da exclusão:
-    <input type="text" id="motivo" placeholder="Digite o motivo da exclusão">
-  </label>
-</div>
+    <div id="motivoExclusao" style="display: none; margin-top: 10px;">
+      <label>
+        Motivo da exclusão:
+        <input type="text" id="motivo" placeholder="Digite o motivo da exclusão">
+      </label>
+    </div>
 
     <label>Nome completo:</label>
-      <input type="text" name="nome_completo" required>
+    <input type="text" name="nome_completo" required>
 
     <div class="row">
       <div><label>CPF:</label><input type="text" required></div>
       <div><label>RG:</label><input type="text" required></div>
-  </div>
+    </div>
 
     <div class="row">
-  <div><label>Data de nascimento:</label><input type="date" required></div>
-  <div>
-    <label>Sexo:</label>
-    <select required>
-      <option value="">Selecione</option>
-      <option value="Masculino">Masculino</option>
-      <option value="Feminino">Feminino</option>
-      <option value="Outro">Outro</option>
-    </select>
-  </div>
-  <div>
-    <label>Raça/Cor:</label>
-    <select name="raca_cor" required>
-      <option value="">Selecione</option>
-      <option value="Branca">Branca</option>
-      <option value="Preta">Preta</option>
-      <option value="Parda">Parda</option>
-      <option value="Amarela">Amarela</option>
-      <option value="Indígena">Indígena</option>
-      <option value="Não declarada">Prefere não declarar</option>
-    </select>
-  </div>
-</div>
+      <div><label>Data de nascimento:</label><input type="date" required></div>
+      <div>
+        <label>Sexo:</label>
+        <select required>
+          <option value="">Selecione</option>
+          <option value="Masculino">Masculino</option>
+          <option value="Feminino">Feminino</option>
+          <option value="Outro">Outro</option>
+        </select>
+      </div>
+      <div>
+        <label>Raça/Cor:</label>
+        <select name="raca_cor" required>
+          <option value="">Selecione</option>
+          <option value="Branca">Branca</option>
+          <option value="Preta">Preta</option>
+          <option value="Parda">Parda</option>
+          <option value="Amarela">Amarela</option>
+          <option value="Indígena">Indígena</option>
+          <option value="Não declarada">Prefere não declarar</option>
+        </select>
+      </div>
+    </div>
 
     <div class="row">
       <div><label>Nacionalidade:</label><input type="text"></div>
@@ -274,176 +94,171 @@
 
     <h3>Vínculo com o Município</h3>
 
-<!-- Unidade vinculada -->
-<div class="row">
-  <div>
-    <label>Nome Fantasia do Estabelecimento:</label>
-    <input type="text" name="unidade_vinculada" required>
-  </div>
-</div>
+    <!-- Unidade vinculada -->
+    <div class="row">
+      <div>
+        <label>Nome Fantasia do Estabelecimento:</label>
+        <input type="text" name="unidade_vinculada" required>
+      </div>
+    </div>
 
-<!-- Cargo ou função -->
-<div class="row">
-  <div>
-    <label for="cargo">Cargo ou função:</label>
-    <select id="cargo" name="cargo" onchange="toggleCamposCargo()" required>
-      <option value="">Selecione</option>
-      <option value="Médico">Médico Anestesista</option>
-      <option value="Médico">Médico Pediatra</option>
-      <option value="Médico">Médico Clinico Geral</option>
-      <option value="Médico">Médico Cirurgião Geral</option>
-      <option value="Médico">Médico Psiquiatra</option>
-      <option value="Médico">Médico Ortopedista</option>
-      <option value="Enfermeiro">Enfermeiro</option>
-      <option value="Téc. Enfermagem">Téc. Enfermagem</option>
-      <option value="Aux. Enfermagem">Aux. Enfermagem</option>
-      <option value="Preceptor/Enfermeiro">Preceptor/Enfermeiro</option>
-      <option value="Cirurgião Dentista">Cirurgião Dentista</option>
-      <option value="Téc. Saúde Bucal">Téc. Saúde Bucal</option>
-      <option value="Agente Comunitário de Saúde">Agente Comunitário de Saúde</option>
-      <option value="Agente de Combate às Endemias">Agente de Combate às Endemias</option>
-      <option value="Psicólogo">Psicólogo</option>
-      <option value="Psicólogo">Fonoaudiólogo</option>
-      <option value="Assistente Social">Assistente Social</option>
-      <option value="Fisioterapeuta">Fisioterapeuta</option>
-      <option value="Farmacêutico">Farmacêutico</option>
-      <option value="Motorista">Motorista</option>
-      <option value="Zelador">Zelador</option>
-      <option value="Administrativo">Administrativo</option>
-      <option value="Gerente">Gerente</option>
-      <option value="outros">Outros</option>
-    </select>
-  </div>
-</div>
+    <!-- Cargo ou função -->
+    <div class="row">
+      <div>
+        <label for="cargo">Cargo ou função:</label>
+        <select id="cargo" name="cargo" onchange="toggleCamposCargo()" required>
+          <option value="">Selecione</option>
+          <option value="Médico">Médico Anestesista</option>
+          <option value="Médico">Médico Pediatra</option>
+          <option value="Médico">Médico Clinico Geral</option>
+          <option value="Médico">Médico Cirurgião Geral</option>
+          <option value="Médico">Médico Psiquiatra</option>
+          <option value="Médico">Médico Ortopedista</option>
+          <option value="Enfermeiro">Enfermeiro</option>
+          <option value="Téc. Enfermagem">Téc. Enfermagem</option>
+          <option value="Aux. Enfermagem">Aux. Enfermagem</option>
+          <option value="Preceptor/Enfermeiro">Preceptor/Enfermeiro</option>
+          <option value="Cirurgião Dentista">Cirurgião Dentista</option>
+          <option value="Téc. Saúde Bucal">Téc. Saúde Bucal</option>
+          <option value="Agente Comunitário de Saúde">Agente Comunitário de Saúde</option>
+          <option value="Agente de Combate às Endemias">Agente de Combate às Endemias</option>
+          <option value="Psicólogo">Psicólogo</option>
+          <option value="Fonoaudiólogo">Fonoaudiólogo</option>
+          <option value="Assistente Social">Assistente Social</option>
+          <option value="Fisioterapeuta">Fisioterapeuta</option>
+          <option value="Farmacêutico">Farmacêutico</option>
+          <option value="Motorista">Motorista</option>
+          <option value="Zelador">Zelador</option>
+          <option value="Administrativo">Administrativo</option>
+          <option value="Gerente">Gerente</option>
+          <option value="outros">Outros</option>
+        </select>
+      </div>
+    </div>
 
-<!-- Subcampo: Especialidade Médica -->
-<div class="row" id="especialidadeMedicaContainer" style="display: none;">
-  <div>
-    <label style="color: #e63946; font-size: 14px;" for="especialidadeMedica">Especialidade do Médico:</label>
-    <select id="especialidadeMedica" name="especialidadeMedica">
-      <option value="">Selecione</option>
-      <option value="Clínico Geral">Clínico Geral</option>
-      <option value="Ginecologia e Obstetrícia">Ginecologia e Obstetrícia</option>
-      <option value="Pediatra">Pediatra</option>
-      <option value="Anestesiologia">Anestesiologia</option>
-      <option value="Oftalmologia">Oftalmologia</option>
-      <option value="Médico em radiologia e diagnostico por imagem">Médico em radiologia e diagnostico por imagem</option>
-      <option value="Neurologia">Neurologia</option>
-      <option value="Cardiologia">Cardiologia</option>
-      <option value="Ortopedia">Ortopedia</option>
-      <option value="Fisioterapeuta">Fisioterapeuta</option>
-      <option value="Dermatologia">Dermatologia</option>
-      <option value="Cirurgião Dentista">Cirurgião Dentista</option>
-      <option value="Cardiologia">Cardiologia</option>
-      <option value="Fonoaudiólogo">Fonoaudiólogo</option>
-      <option value="Urologia">Urologia</option>
-      <option value="Otorrinolaringologia">Otorrinolaringologia</option>
-      <option value="Oncologia clínica">Oncologia clínica</option>
-      <option value="Pneumologia">Pneumologia</option>
-      <option value="Pediatra">Preceptor</option>
-      <option value="Estratégia de Saúde da Família">Estratégia de Saúde da Família</option>
-      <option value="Outra">Outra</option>
-    </select>
-  </div>
-</div>
+    <!-- Subcampo: Especialidade Médica -->
+    <div class="row" id="especialidadeMedicaContainer" style="display: none;">
+      <div>
+        <label style="color: #e63946; font-size: 14px;" for="especialidadeMedica">Especialidade do Médico:</label>
+        <select id="especialidadeMedica" name="especialidadeMedica">
+          <option value="">Selecione</option>
+          <option value="Clínico Geral">Clínico Geral</option>
+          <option value="Ginecologia e Obstetrícia">Ginecologia e Obstetrícia</option>
+          <option value="Pediatra">Pediatra</option>
+          <option value="Anestesiologia">Anestesiologia</option>
+          <option value="Oftalmologia">Oftalmologia</option>
+          <option value="Médico em radiologia e diagnostico por imagem">Médico em radiologia e diagnostico por imagem</option>
+          <option value="Neurologia">Neurologia</option>
+          <option value="Cardiologia">Cardiologia</option>
+          <option value="Ortopedia">Ortopedia</option>
+          <option value="Fisioterapeuta">Fisioterapeuta</option>
+          <option value="Dermatologia">Dermatologia</option>
+          <option value="Cirurgião Dentista">Cirurgião Dentista</option>
+          <option value="Fonoaudiólogo">Fonoaudiólogo</option>
+          <option value="Urologia">Urologia</option>
+          <option value="Otorrinolaringologia">Otorrinolaringologia</option>
+          <option value="Oncologia clínica">Oncologia clínica</option>
+          <option value="Pneumologia">Pneumologia</option>
+          <option value="Preceptor">Preceptor</option>
+          <option value="Estratégia de Saúde da Família">Estratégia de Saúde da Família</option>
+          <option value="Outra">Outra</option>
+        </select>
+      </div>
+    </div>
 
+    <!-- Campo extra se selecionar "Outros" -->
+    <div class="row" id="outroCargoContainer" style="display: none;">
+      <div>
+        <label for="outroCargo">Informe o cargo:</label>
+        <input type="text" id="outroCargo" name="outroCargo">
+      </div>
+    </div>
 
-<!-- Campo extra se selecionar "Outros" -->
-<div class="row" id="outroCargoContainer" style="display: none;">
-  <div>
-    <label for="outroCargo">Informe o cargo:</label>
-    <input type="text" id="outroCargo" name="outroCargo">
-  </div>
-</div>
+    <!-- Formação e Registro -->
+    <div id="formacaoRegistro" style="display: none;">
+      <h3>Formação e Registro</h3>
 
-<!-- Formação e Registro: só aparece se cargo for médico, enfermeiro, Preceptor/médico, Preceptor/enfermeiro, técnico enfermagem, Auxi. enfermagem, Psicólogo, Nutricionista, Fonoaudiólogo, Fisioterapeuta ou dentista -->
-<div id="formacaoRegistro" style="display: none;">
-  <h3>Formação e Registro</h3>
+      <div class="row">
+        <div><label>Instituição de ensino:</label><input type="text" name="instituicao"></div>
+        <div><label>Ano de conclusão:</label><input type="text" name="ano_conclusao"></div>
+      </div>
 
-  
-  <div class="row">
-    <div><label>Instituição de ensino:</label><input type="text" name="instituicao"></div>
-    <div><label>Ano de conclusão:</label><input type="text" name="ano_conclusao"></div>
-  </div>
+      <div class="row">
+        <div><label>Registro Profissional:</label><input type="text" name="registro_profissional"></div>
+        <div><label>UF:</label><input type="text" name="uf_registro"></div>
+      </div>
 
-  <div class="row"> 
-    <div><label>Registro Profissional:</label><input type="text" name="registro_profissional"></div>
-    <div><label>UF:</label><input type="text" name="uf_registro"></div>
-  </div>
-
-  <div class="row">
-    <div><label>Número do RQE (se houver):</label><input type="text" name="rqe"></div>
-    <div><label>UF:</label><input type="text" name="uf_rqe"></div>
-  </div>
-</div>
+      <div class="row">
+        <div><label>Número do RQE (se houver):</label><input type="text" name="rqe"></div>
+        <div><label>UF:</label><input type="text" name="uf_rqe"></div>
+      </div>
+    </div>
 
     <div class="row">
-      <div><label>Tipo de vínculo:</label>
-       <select id="tipo-vinculo" onchange="toggleCNPJ()">
+      <div>
+        <label>Tipo de vínculo:</label>
+        <select id="tipo-vinculo" onchange="toggleCNPJ()">
           <option>Selecione</option>
-        <option>Efetivo</option>
-         <option>Comissionado</option>
-         <option>Temporário</option>
-         <option>Portariado</option>
-         <option>Celetista</option>
-         <option>CNPJ</option>
-         <option>Outros</option>
-      </select>
+          <option>Efetivo</option>
+          <option>Comissionado</option>
+          <option>Temporário</option>
+          <option>Portariado</option>
+          <option>Celetista</option>
+          <option>CNPJ</option>
+          <option>Outros</option>
+        </select>
 
-<div class="row" id="campo-cnpj" style="display: none;">
-  <div>
-    <label for="cnpj">Informe o CNPJ:</label>
-    <input type="text" id="cnpj" name="cnpj" placeholder="00.000.000/0000-00" />
-  </div>
-</div>
+        <div class="row" id="campo-cnpj" style="display: none;">
+          <div>
+            <label for="cnpj">Informe o CNPJ:</label>
+            <input type="text" id="cnpj" name="cnpj" placeholder="00.000.000/0000-00" />
+          </div>
+        </div>
 
       </div>
       <div><label>INE de Equipe ESF:</label><input type="text"></div>
     </div>
 
     <div class="row">
-      <div><label>Data de início:</label>
-      <input type="date"></div> 
+      <div><label>Data de início:</label><input type="date"></div>
     </div>
 
     <div>
-  <label for="cargaAmbulatorial">Carga horária ambulatorial (horas):</label>
-  <input type="number" id="cargaAmbulatorial" name="cargaAmbulatorial" min="0" max="40" />
-</div>
+      <label for="cargaAmbulatorial">Carga horária ambulatorial (horas):</label>
+      <input type="number" id="cargaAmbulatorial" name="cargaAmbulatorial" min="0" max="40" />
+    </div>
 
-<div>
-  <label for="cargaHospitalar">Carga horária hospitalar (horas):</label>
-  <input type="number" id="cargaHospitalar" name="cargaHospitalar" min="0" max="40" />
-</div>
-      
-
+    <div>
+      <label for="cargaHospitalar">Carga horária hospitalar (horas):</label>
+      <input type="number" id="cargaHospitalar" name="cargaHospitalar" min="0" max="40" />
+    </div>
 
     <div class="row">
-  <div>
-    <label style="color: #e63946;">Possui vínculo com outro município/Estado?</label>
-    <select id="vinculo-outro-municipio" onchange="toggleCampos()">
-      <option value="Selecione">Selecione</option>
-      <option value="Não">Não</option>
-      <option value="Sim">Sim</option>
-    </select>
-  </div>
+      <div>
+        <label style="color: #e63946;">Possui vínculo com outro município/Estado?</label>
+        <select id="vinculo-outro-municipio" onchange="toggleCampos()">
+          <option value="Selecione">Selecione</option>
+          <option value="Não">Não</option>
+          <option value="Sim">Sim</option>
+        </select>
+      </div>
 
-  <div id="campo-municipio" style="display: none;">
-    <label>Informe o município/Estado:</label>
-    <input type="text" />
-  </div>
+      <div id="campo-municipio" style="display: none;">
+        <label>Informe o município/Estado:</label>
+        <input type="text" />
+      </div>
 
-  <div id="campo-carga-horaria" style="display: none;">
-    <label>Carga horária semanal (horas):</label>
-    <select id="carga-horaria">
-      <option>Selecione</option>
-      <option>10</option>
-      <option>20</option>
-      <option>30</option>
-      <option>40</option>
-    </select>
-  </div>
-</div>
+      <div id="campo-carga-horaria" style="display: none;">
+        <label>Carga horária semanal (horas):</label>
+        <select id="carga-horaria">
+          <option>Selecione</option>
+          <option>10</option>
+          <option>20</option>
+          <option>30</option>
+          <option>40</option>
+        </select>
+      </div>
+    </div>
 
     <div class="declaration">
       <p>Declaro que as informações acima são verdadeiras, sob as penas da lei.</p>
@@ -452,158 +267,28 @@
     </div>
 
     <div class="declaration">
- <p style="color: red;"><strong>Após o preenchimento e a assinatura da ficha, encaminhe-a juntamente com os documentos do servidor ao Gerente da unidade, para que este providencie o encaminhamento para cadastro.</strong></p>
+      <p style="color: red;"><strong>Após o preenchimento e a assinatura da ficha, encaminhe-a juntamente com os documentos do servidor ao Gerente da unidade, para que este providencie o encaminhamento para cadastro.</strong></p>
+      <p><strong>Para mais informações, entre em contato com Gilson ou Neide.</strong></p>
+    </div>
 
-  <p><strong>Para mais informações, entre em contato com Gilson ou Neide.</strong></p>
-</div>
+    <button onclick="validarFormulario()">Imprimir Cadastro</button>
 
-   <button onclick="validarFormulario()">Imprimir Cadastro</button>
+    <!-- mensagem PJ (aparece apenas ao imprimir) -->
+    <div class="mensagem-pj">
+      Anexo todos documentos inclusive se for cadastrado PJ.
+    </div>
 
-  </div> 
+    <!-- Rodapé / direitos autorais -->
+    <div class="rodape-direitos">
+      Sistema desenvolvido por <strong>Gilson de Souza Lima</strong> e <strong>Neide Barreto</strong>.<br>
+      Uso exclusivo do setor da Secretaria Municipal de Saúde – Prefeitura de Cacoal/RO.<br>
+      É vedada a reprodução, redistribuição ou modificação sem autorização expressa dos autores.<br>
+      © 2025 – Todos os direitos reservados.
+    </div>
 
-</div> 
+  </div> <!-- fim .container -->
 
-<div class="mensagem-pj">S
-  Anexo todos documentos inclusive se for cadastrado PJ.
-</div>
-
-<script>
-  function toggleTransferInfo() {
-    const selecao = document.getElementById('transferida').value;
-    const transferDiv = document.getElementById('transferInfo');
-    transferDiv.style.display = selecao === 'sim' ? 'flex' : 'none';
-  }
-</script>
-
-<script>
-  function toggleOutroCargo() {
-    const cargo = document.getElementById('cargo').value;
-    const outroContainer = document.getElementById('outroCargoContainer');
-    outroContainer.style.display = (cargo === 'outros') ? 'flex' : 'none';
-  }
-</script>
-
-<script>
-  function toggleMunicipio() {
-    const select = document.getElementById("vinculo-outro-municipio");
-    const campo = document.getElementById("campo-municipio");
-    campo.style.display = select.value === "Sim" ? "block" : "none";
-  }
-</script>
-
-<script>
-  function toggleCNPJ() {
-    const tipoVinculo = document.getElementById("tipo-vinculo").value;
-    const campoCNPJ = document.getElementById("campo-cnpj");
-
-    if (tipoVinculo === "CNPJ") {
-      campoCNPJ.style.display = "block";
-    } else {
-      campoCNPJ.style.display = "none";
-    }
-  }
-</script>
-
-<script>
-  function mostrarMensagemEImprimir() {
-    const mensagem = document.querySelector(".mensagem-pj");
-    mensagem.style.display = "block";
-    setTimeout(() => {
-      window.print();
-    }, 100); // pequeno delay para garantir que a mensagem apareça antes da impressão
-  }
-</script>
-
-<script>
-  function toggleCamposCargo() {
-  const cargo = document.getElementById("cargo").value;
-  const outroCargoContainer = document.getElementById("outroCargoContainer");
-  const formacaoRegistro = document.getElementById("formacaoRegistro");
-  const especialidadeMedicaContainer = document.getElementById("especialidadeMedicaContainer");
-  const especialidadeMedica = document.getElementById("especialidadeMedica");
-
-  // Mostrar campo "outros"
-  outroCargoContainer.style.display = (cargo === "outros") ? "block" : "none";
-
-  // Mostrar subespecialidade médica
-  if (cargo === "Médico") {
-    especialidadeMedicaContainer.style.display = "block";
-    especialidadeMedica.setAttribute("required", "required");
-  } else {
-    especialidadeMedicaContainer.style.display = "none";
-    especialidadeMedica.removeAttribute("required");
-    especialidadeMedica.value = ""; // limpa valor ao ocultar
-  }
-
-  // Mostrar Formação e Registro para determinados cargos
-  const cargosComFormacao = [
-    "Clínico Geral", "Enfermeiro", "Preceptor/Médico", "Preceptor/Enfermeiro",
-    "Téc. Enfermagem", "Aux. Enfermagem", "Psicólogo", "Assistente Social", "Fisioterapeuta", "Cirurgião Dentista"
-  ];
-  formacaoRegistro.style.display = cargosComFormacao.includes(cargo) ? "block" : "none";
-}
-</script>
-
-<script>
-  function atualizarCampos() {
-    const acao = document.getElementById("acao").value;
-    const campoMotivo = document.getElementById("motivoExclusao");
-
-    if (acao === "excluir") {
-      campoMotivo.style.display = "block";
-    } else {
-      campoMotivo.style.display = "none";
-    }
-  }
-</script>
-
-<script>
-  function toggleCampos() {
-    const vinculo = document.getElementById("vinculo-outro-municipio").value;
-    const campoMunicipio = document.getElementById("campo-municipio");
-    const campoCarga = document.getElementById("campo-carga-horaria");
-
-    if (vinculo === "Sim") {
-      campoMunicipio.style.display = "block";
-      campoCarga.style.display = "block";
-    } else {
-      campoMunicipio.style.display = "none";
-      campoCarga.style.display = "none";
-    }
-  }
-</script>
-
-<script>
-  function validarFormulario() {
-    const cargo = document.getElementById("cargo").value;
-    const especialidade = document.getElementById("especialidadeMedica").value;
-
-    // Verifica se cargo foi selecionado
-    if (!cargo) {
-      alert("Por favor, selecione o cargo ou função.");
-      document.getElementById("cargo").focus();
-      return;
-    }
-
-    // Se cargo for Médico, a especialidade é obrigatória
-    if (cargo === "Médico" && !especialidade) {
-      alert("Por favor, selecione a especialidade médica.");
-      document.getElementById("especialidadeMedica").focus();
-      return;
-    }
-
-    // Se passou pelas validações, imprime o cadastro
-    mostrarMensagemEImprimir();
-  }
-</script>
-
-<!-- DIREITOS AUTORAIS -->
-<div style="margin-top: 30px; font-size: 10px; text-align: center; color: #444;">
-  Sistema desenvolvido por <strong>Gilson de Souza Lima</strong> e <strong>Neide Barreto</strong>.  
-  Uso exclusivo do setor da Secretaria Municipal de Saúde – Prefeitura de Cacoal/RO.  
-  É vedada a reprodução, redistribuição ou modificação sem autorização expressa dos autores.  
-  © 2025 – Todos os direitos reservados.
-</div>
-
+  <!-- JS externo -->
+  <script src="script.js"></script>
 </body>
 </html>

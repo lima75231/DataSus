@@ -1,0 +1,206 @@
+:root {
+  --verde-saude: #28a745;
+  --verde-hover: #218838;
+  --azul-prefeitura: #005aa7;
+  --fundo: #f0f4f8;
+  --branco: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  font-size: 11px;
+  margin: 0;
+  padding: 0;
+  background: var(--fundo);
+  color: #333;
+}
+
+.container {
+  width: 210mm;
+  max-width: 100%;
+  margin: 0 auto;
+  background: var(--branco);
+  padding: 8px 15px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.logo img {
+  height: 100px;
+  width: auto;
+}
+
+.titulo {
+  text-align: center;
+  flex-grow: 1;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.titulo h1,
+.titulo h2,
+.titulo h3 {
+  margin: 2px 0;
+  font-size: 12px;
+  color: var(--azul-prefeitura);
+}
+
+.data-cabecalho {
+  text-align: right;
+  font-size: 11px;
+}
+
+label {
+  font-weight: bold;
+  display: block;
+  margin-top: 2px;
+  margin-bottom: 1px;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 4px;
+  margin-bottom: 4px;
+  font-size: 11px;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  page-break-inside: avoid;
+}
+
+.row > div {
+  flex: 1 1 48%;
+}
+
+h3 {
+  text-align: center;
+  color: var(--azul-prefeitura);
+  margin: 4px 0;
+}
+
+.declaration {
+  margin-top: 6px;
+  font-size: 11px;
+  page-break-inside: avoid;
+}
+
+button {
+  margin-top: 10px;
+  background-color: var(--verde-saude);
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  font-size: 12px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: var(--verde-hover);
+}
+
+/* Mensagem PJ (escondida na tela) */
+.mensagem-pj {
+  display: none;
+  margin-top: 15px;
+  padding: 10px;
+  border: 2px solid var(--azul-prefeitura);
+  background-color: #e8f0fe;
+  font-weight: bold;
+  font-size: 12px;
+  color: #003366;
+  border-radius: 4px;
+}
+
+/* Rodapé direitos autorais */
+.rodape-direitos {
+  margin-top: 15px;
+  font-size: 10px;
+  text-align: center;
+  color: #444;
+  padding-top: 8px;
+  border-top: 1px solid #ddd;
+}
+
+/* Configurações de impressão */
+@page {
+  size: A4 portrait;
+  margin: 10mm;
+}
+
+@media print {
+  body {
+    font-size: 10px;
+    background: #fff;
+    margin: 0;
+    padding: 0;
+  }
+
+  .container {
+    width: auto;
+    padding: 0 5mm;
+  }
+
+  .logo img {
+    height: 60px;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-size: 11px;
+  }
+
+  input,
+  select {
+    font-size: 10px;
+    padding: 2px;
+    margin-bottom: 2px;
+    border: 1px solid #000;
+  }
+
+  label {
+    margin-top: 2px;
+    margin-bottom: 1px;
+  }
+
+  button {
+    display: none;
+  }
+
+  .row > div {
+    flex: 1 1 49%;
+  }
+
+  .row,
+  .declaration {
+    page-break-inside: avoid;
+  }
+
+  /* mostrar mensagem PJ na impressão */
+  .mensagem-pj {
+    display: block !important;
+  }
+
+  /* rodapé um pouco menor na impressão */
+  .rodape-direitos {
+    font-size: 8px;
+    margin-top: 10px;
+    padding-top: 4px;
+  }
+}
