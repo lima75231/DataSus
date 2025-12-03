@@ -27,7 +27,7 @@
 
     <label>
       <label style="color: #e63946;">DADOS OPERACIONAIS:</label>
-      <select id="acao" onchange="atualizarCampos()">
+      <select id="acao" onchange="atualizarCampos()"required>
         <option value="">Selecione...</option>
         <option value="incluir">Inclusão</option>
         <option value="Alteração">Alteração</option>
@@ -199,6 +199,7 @@
       <div>
         <label>Tipo de vínculo:</label>
         <select id="tipo-vinculo" onchange="toggleCNPJ()"required>
+          <option value="" disabled selected>Selecione</option>
           <option>Selecione</option>
           <option>Efetivo</option>
           <option>Comissionado</option>
@@ -237,7 +238,8 @@
     <div class="row">
       <div>
         <label style="color: #e63946;">Possui vínculo com outro município/Estado?</label>
-        <select id="vinculo-outro-municipio" onchange="toggleCampos()">
+        <select id="vinculo-outro-municipio" onchange="toggleCampos()"required>
+          <option value="" disabled selected>Selecione</option>
           <option value="Selecione">Selecione</option>
           <option value="Não">Não</option>
           <option value="Sim">Sim</option>
