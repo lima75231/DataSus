@@ -121,7 +121,51 @@ function validarFormulario() {
     return;
   }
 
+      const unidadeSelect = document.getElementById("unidadeSelect").value;
+const unidadeFinal = document.getElementById("unidadeFinal").value;
+
+if (!unidadeSelect) {
+  alert("Selecione a unidade/estabelecimento.");
+  document.getElementById("unidadeSelect").focus();
+  return;
+}
+
+if (unidadeSelect === "OUTRO" && !unidadeFinal) {
+  alert("Informe o estabelecimento não listado.");
+  document.getElementById("unidadeOutro").focus();
+  return;
+}
+
+
+
+
   // aqui você pode adicionar mais validações depois, se quiser
 
   mostrarMensagemEImprimir();
 }
+
+function toggleUnidadeOutro() {
+  const select = document.getElementById("unidadeSelect");
+  const container = document.getElementById("unidadeOutroContainer");
+  const inputOutro = document.getElementById("unidadeOutro");
+  const unidadeFinal = document.getElementById("unidadeFinal");
+
+  if (select.value === "OUTRO") {
+    container.style.display = "block";
+    inputOutro.setAttribute("required", "required");
+    unidadeFinal.value = ""; // será preenchido ao digitar
+    setTimeout(() => inputOutro.focus(), 50);
+  } else {
+    container.style.display = "none";
+    inputOutro.removeAttribute("required");
+    inputOutro.value = "";
+    unidadeFinal.value = select.value; // unidade final definida pelo select
+  }
+}
+
+// Mantém o hidden atualizado enquanto digita a unidade "Outro"
+document.addEventListener("input", (e) => {
+  if (e.target && e.target.id === "unidadeOutro") {
+    document.getElementById("unidadeFinal").value = e.target.value.trim();
+  }
+});

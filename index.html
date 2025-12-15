@@ -97,8 +97,51 @@
     <!-- Unidade vinculada -->
     <div class="row">
       <div>
-        <label>Tipo de Estabelecimento\ Unidade:</label>
-        <input type="text" name="unidade_vinculada" required>
+        <label for="unidadeSelect">Nome Fantasia do Estabelecimento (Unidade):</label>
+<select id="unidadeSelect" name="unidadeSelect" onchange="toggleUnidadeOutro()" required>
+  <option value="" disabled selected>Selecione</option>
+
+  <!-- EXEMPLOS (substitua pela lista real do município) -->
+  <option value="UBS CRISTO REI">UBS CRISTO REI</option>
+  <option value="UBS SAO MARCOS">UBS SAO MARCOS</option>
+  <option value="UBS NOVA ESPERANCA">UBS NOVA ESPERANCA</option>
+  <option value="UBS SAO JUDAS TADEU">UBS SAO JUDAS TADEU</option>
+  <option value="UBS EDMUR JOSE MARCHIOLI">UBS EDMUR JOSE MARCHIOLI</option>
+  <option value="UBS JOAQUIM GONCALVES LEDO">UBS JOAQUIM GONCALVES LEDO</option>
+  <option value="UBS VILAGE DO SOL">UBS VILAGE DO SOL</option>
+  <option value="UBS CLEIDE GOMES ALPHA PARQUE">UBS CLEIDE GOMES ALPHA PARQUE</option>
+  <option value="UBS HABITAR BRASIL">UBS HABITAR BRASIL</option>
+  <option value="UBS MARINA DONARIA DE LIMA DIVINOPOLIS">UBS MARINA DONARIA DE LIMA DIVINOPOLIS</option>
+  <option value="UBS MORADA DO BOSQUE">UBS MORADA DO BOSQUE</option>
+  <option value="HOSPITAL MUNICIPAL MATERNO INFANTIL DE CACOAL">HOSPITAL MUNICIPAL MATERNO INFANTIL DE CACOAL</option>
+  <option value="CENTRO ESPECIALIZADO EM REABILITACAO CER II">CENTRO ESPECIALIZADO EM REABILITACAO CER II</option>
+  <option value="CEREST CENTRO REGIONAL EM SAUDE DO TRABALHADOR DE CACOAL">CEREST CENTRO REGIONAL EM SAUDE DO TRABALHADOR DE CACOAL</option>
+  <option value="PAM PRONTO ATENDIMENTO MUNICIPAL">PAM PRONTO ATENDIMENTO MUNICIPAL</option>
+  <option value="UPA UNIDADE DE PRONTO ATENDIMENTO">UPA UNIDADE DE PRONTO ATENDIMENTO</option>
+  <option value="CENTRO DE ESPECIALIDADES ODONTOLOGICAS DE CACOAL TIPO III">CENTRO DE ESPECIALIDADES ODONTOLOGICAS DE CACOAL TIPO III</option>
+  <option value="CENTRO DE ATENCAO PSICOSSOCIAL DE CACOAL CAPS II">CENTRO DE ATENCAO PSICOSSOCIAL DE CACOAL CAPS II</option>
+  <option value="AMBULATORIO ESPECIALIZADO">AMBULATORIO ESPECIALIZADO</option>
+  <option value="CREAMI DR FRANCISCO EMMANOEL FELIX NOGUEIRA">CREAMI DR FRANCISCO EMMANOEL FELIX NOGUEIRA</option>
+  <option value="CEREST CENTRO REGIONAL EM SAUDE DO TRABALHADOR DE CACOAL">CEREST CENTRO REGIONAL EM SAUDE DO TRABALHADOR DE CACOAL</option>
+  <option value="LACLIM LABORATORIO MUNICIPAL DE ANALISES CLINICAS">LACLIM LABORATORIO MUNICIPAL DE ANALISES CLINICAS</option>
+  <option value="UNIDADE DE VIGILANCIA SANITARIA">UNIDADE DE VIGILANCIA SANITARIA</option>
+  <option value="NEPS NUCLEO DE EDUCACAO PERMANENTE EM SAUDE">NEPS NUCLEO DE EDUCACAO PERMANENTE EM SAUDE</option>
+  <option value="SERVICO DE ATENCAO ESPECIALIZADA SAE">SERVICO DE ATENCAO ESPECIALIZADA SAE</option>
+  <option value="SECRETARIA MUNICIPAL DE SAUDE DE CACOAL">SECRETARIA MUNICIPAL DE SAUDE DE CACOAL</option>
+  <option value="OUTRO">Outro (não listado)</option>
+</select>
+
+<!-- aparece somente se escolher "Outro" -->
+<div class="row" id="unidadeOutroContainer" style="display:none;">
+  <div>
+    <label for="unidadeOutro">Informe o estabelecimento não listado:</label>
+    <input type="text" id="unidadeOutro" name="unidadeOutro" placeholder="Digite o nome da unidade">
+  </div>
+</div>
+
+<!-- valor final (sempre vai conter o nome correto para salvar/usar) -->
+<input type="hidden" id="unidadeFinal" name="unidade_vinculada">
+
       </div>
     </div>
 
@@ -280,6 +323,7 @@
     </div>
 
     <button onclick="validarFormulario()">Imprimir Cadastro</button>
+      
 
     <!-- mensagem PJ (aparece apenas ao imprimir) -->
     <div class="mensagem-pj">
@@ -297,6 +341,10 @@
   </div> <!-- fim .container -->
 
   <!-- JS externo -->
+
+
   <script src="script.js"></script>
+
+
 </body>
 </html>
