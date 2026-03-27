@@ -71,8 +71,8 @@ function toggleCamposCargo() {
     "Fisioterapeuta",
     "Cirurgião Dentista",
     "Farmacêutico",
-    "Téc. Saúde Bucal"
-    "Nutricionista"
+    "Téc. Saúde Bucal",
+     "Nutricionista"
   ];
 
   formacaoRegistro.style.display = cargosComFormacao.includes(cargo)
